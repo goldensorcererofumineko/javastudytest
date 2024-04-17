@@ -9,44 +9,37 @@ import java.awt.event.ActionListener;
 
 public class LoginFrame extends JFrame {
 
-    private final JTextField idField;
-    private final JPasswordField pwField;
-
     public LoginFrame() {
         setTitle("LoginJava");
         setSize(250, 150);
         setLocationRelativeTo(null);
         setLayout(new GridLayout(3,2));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //フレーム枠の変更の可否
+        setResizable(false);
 
         JPanel mainPanel = new JPanel();
-//        mainPanel.setLayout(new GridLayout(3, 1, 10, 10));
 
         JPanel p1 = new JPanel();
         JLabel l1 = new JLabel("ID");
-        idField = new JTextField(10);
-//        idField.setPreferredSize(new Dimension(200, 30));
+        JTextField t1 = new JTextField(10);
         p1.add(l1);
-        p1.add(idField);
+        p1.add(t1);
         add(p1, BorderLayout.CENTER);
-//        mainPanel.add(p1,BorderLayout.CENTER);
 
         JPanel p2 = new JPanel();
         JLabel l2 = new JLabel("PW");
-        pwField = new JPasswordField(10);
-//        pwField.setPreferredSize(new Dimension(200, 30));
+        JPasswordField pw = new JPasswordField(10);
         p2.add(l2);
-        p2.add(pwField);
+        p2.add(pw);
         add(p2, BorderLayout.CENTER);
-//        mainPanel.add(p2);
-//        mainPanel.add(p2,BorderLayout.CENTER);
 
         JButton submitButton = new JButton("login");
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String id = idField.getText();
-                char[] pwChars = pwField.getPassword();
+                String id = t1.getText();
+                char[] pwChars = pw.getPassword();
                 String pw = new String(pwChars);
 
                 if (id.equals("admin") && pw.equals("123")) {

@@ -4,39 +4,36 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Main extends JFrame {
+
     public Main() {
-        setTitle("JavaMain");
-        setSize(300, 500);
-        setLocationRelativeTo (null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new BorderLayout());
-        JPanel namePanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        JLabel nameLabel = new JLabel("KAINUMA");
-        namePanel.add(nameLabel);
-        add(namePanel, BorderLayout.NORTH);
+        setTitle("楽しいJAVA-MAIN");
+        setSize(300,100);
+        setLocationRelativeTo(null);
 
-        JPanel textPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        JLabel textLabel = new JLabel("進捗状況");
-        textPanel.add(textLabel);
 
-        JPanel buttonPanel1 = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        JButton listButton = new JButton("JAVA問題");
-        JPanel buttonPanel2 = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        JButton logButton = new JButton("履歴");
-        buttonPanel1.add(listButton);
-        buttonPanel2.add(logButton);
+        JPanel p = new JPanel(new GridLayout(2,1));
+        JPanel p1 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        JLabel l1 = new JLabel("キムジョンファさん");
+        p1.add(l1);
 
-        JPanel centerPanel = new JPanel();
-        centerPanel.setLayout(new GridLayout(3, 0, 10, 10));
+        JPanel p2 = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        JLabel l2 = new JLabel("進捗率(2/5) : 40%");
+        p2.add(l2);
 
-        centerPanel.add(textPanel);
-        centerPanel.add(buttonPanel1);
-        centerPanel.add(buttonPanel2);
-        add(centerPanel, BorderLayout.CENTER);
+        JButton b1 = new JButton("問題リスト");
+        JButton b2 = new JButton("履歴");
+        p2.add(b1);
+        p2.add(b2);
 
-        JPanel lowPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        add(lowPanel, BorderLayout.SOUTH);
+        p.add(p1);
+        p.add(p2);
+        add(p);
+
 
         setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new Main();
     }
 }
