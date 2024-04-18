@@ -13,6 +13,20 @@ public class ListFrame extends JFrame {
 
     public ListFrame() {
         JPanel p = new JPanel(new GridLayout(2,1));
+//        DbConn dbConn = new DbConn();
+//        ResultSet rs = dbConn.getQuestionList();
+//        String content = "";
+//        String selection = "";
+//
+//        try {
+//            while (rs.next()) {
+//                content = rs.getString("content");
+//                selection = rs.getString("selection");
+//            }
+//
+//        } catch (SQLException e) {
+//            System.out.println("");
+//        }
 
         JPanel p1 = new JPanel();
         JTextArea t1 = new JTextArea(10,30);
@@ -38,6 +52,22 @@ public class ListFrame extends JFrame {
         JPanel p3 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 //        p3.setLayout(new BoxLayout(p3, BoxLayout.Y_AXIS));
 //        // 選択肢数
+//        String[] a = selection.split(",");
+//        // 選択肢数
+//        JRadioButton[] radio = new JRadioButton[a.length];
+//        for(int i=0; i < a.length; i++) {
+//            radio[i] = new JRadioButton(a[i]);
+//        }
+//
+//        ButtonGroup bg = new ButtonGroup();
+//        for(int i=0; i < a.length; i++) {
+//            bg.add(radio[i]);
+//        }
+//
+//        for(int i=0; i < a.length; i++) {
+//            p2.add(radio[i]);
+//        }
+
         JRadioButton[] radio = new JRadioButton[4];
         radio[0] = new JRadioButton("aaa");
         radio[1] = new JRadioButton("bbb");

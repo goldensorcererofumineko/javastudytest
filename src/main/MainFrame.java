@@ -1,6 +1,7 @@
 package main;
 
 import History.HistoryFrame;
+import list.AnswerListFrame;
 import list.ListFrame;
 import login.LoginFrame;
 
@@ -28,6 +29,7 @@ public class MainFrame extends JFrame {
 
         JButton b1 = new JButton("問題リスト");
         b1.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
                 new ListFrame();
@@ -35,10 +37,10 @@ public class MainFrame extends JFrame {
         });
         JButton b2 = new JButton("履歴");
         b2.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
-
-                new HistoryFrame();
-
+                setEnabled(false);
+                new AnswerListFrame(MainFrame.this);
             }
         });
         p2.add(b1);

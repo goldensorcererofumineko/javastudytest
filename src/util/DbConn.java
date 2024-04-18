@@ -6,7 +6,7 @@ import java.sql.*;
 
 public class DbConn {
 
-    private Connection getconn() {
+    private Connection getConn() {
 
 
         String url = "jdbc:mysql://localhost:3306/weavus";
@@ -23,7 +23,7 @@ public class DbConn {
     }
 
     public boolean login(String id, String pw) {
-        Connection conn = getconn();
+        Connection conn = getConn();
         try {
             String sql = "SELECT * FROM userinfo where id=? and pw=?";
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -38,6 +38,21 @@ public class DbConn {
             }
             return rs.next();
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public ResultSet getQuestionList() {
+
+        Connection conn = getConn();
+
+        try {
+            String sql = "SELECT * FROM question where category=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, "0");
+            ResultSet rs = ps.executeQuery();
+
+            return rs;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

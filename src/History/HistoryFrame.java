@@ -22,7 +22,7 @@ public class HistoryFrame extends JFrame {
         l.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
 //                setVisible(false);
-                new AnswerListFrame();
+//                new AnswerListFrame();
 //                try {
 //                    Desktop.getDesktop().open(new File("C:/STUDY/enjoy/enjoyjava/src/list/AnswerListFrame.java"));
 //                } catch (Exception ex) {

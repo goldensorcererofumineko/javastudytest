@@ -12,7 +12,7 @@ import static javax.swing.JOptionPane.YES_OPTION;
 
 public class AnswerListFrame extends JFrame {
 
-    public AnswerListFrame() {
+    public AnswerListFrame(MainFrame mainFrame) {
         JPanel p = new JPanel(new GridLayout(2,1));
 
         JPanel p1 = new JPanel();
@@ -98,7 +98,4 @@ public class AnswerListFrame extends JFrame {
         setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new AnswerListFrame();
-    }
 }
