@@ -1,11 +1,17 @@
 package main;
 
+import History.HistoryFrame;
+import list.ListFrame;
+import login.LoginFrame;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Main extends JFrame {
+public class MainFrame extends JFrame {
 
-    public Main() {
+    public MainFrame() {
         setTitle("楽しいJAVA-MAIN");
         setSize(300,100);
         setLocationRelativeTo(null);
@@ -13,7 +19,7 @@ public class Main extends JFrame {
 
         JPanel p = new JPanel(new GridLayout(2,1));
         JPanel p1 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        JLabel l1 = new JLabel("キムジョンファさん");
+        JLabel l1 = new JLabel(LoginFrame.userIdl + "さん");
         p1.add(l1);
 
         JPanel p2 = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -21,7 +27,20 @@ public class Main extends JFrame {
         p2.add(l2);
 
         JButton b1 = new JButton("問題リスト");
+        b1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                new ListFrame();
+            }
+        });
         JButton b2 = new JButton("履歴");
+        b2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                new HistoryFrame();
+
+            }
+        });
         p2.add(b1);
         p2.add(b2);
 
@@ -34,6 +53,6 @@ public class Main extends JFrame {
     }
 
     public static void main(String[] args) {
-        new Main();
+        new MainFrame();
     }
 }

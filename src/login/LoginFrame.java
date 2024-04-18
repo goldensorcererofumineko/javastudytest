@@ -1,6 +1,7 @@
 package login;
 
-import main.Main;
+import main.MainFrame;
+import util.DbConn;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,53 +10,50 @@ import java.awt.event.ActionListener;
 
 public class LoginFrame extends JFrame {
 
+    public static String userIdl;
+
     public LoginFrame() {
-        setTitle("LoginJava");
-        setSize(250, 150);
+        DbConn db = new DbConn();
+        setTitle("楽しいJAVA-LOGIN");
+        setSize(300,120);
         setLocationRelativeTo(null);
-        setLayout(new GridLayout(3,2));
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //フレーム枠の変更の可否
-        setResizable(false);
-
-        JPanel mainPanel = new JPanel();
-
-        JPanel p1 = new JPanel();
+        setLayout(new BorderLayout());
+        JPanel p1 = new JPanel(new GridLayout(2,3));
         JLabel l1 = new JLabel("ID");
         JTextField t1 = new JTextField(10);
+
+        JLabel l2 = new JLabel("PW");
+        JPasswordField t2 = new JPasswordField(10);
         p1.add(l1);
         p1.add(t1);
+        p1.add(l2);
+        p1.add(t2);
+
         add(p1, BorderLayout.CENTER);
-
         JPanel p2 = new JPanel();
-        JLabel l2 = new JLabel("PW");
-        JPasswordField pw = new JPasswordField(10);
-        p2.add(l2);
-        p2.add(pw);
-        add(p2, BorderLayout.CENTER);
-
-        JButton submitButton = new JButton("login");
-        submitButton.addActionListener(new ActionListener() {
+        JButton b1 = new JButton("login");
+        b1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String id = t1.getText();
-                char[] pwChars = pw.getPassword();
-                String pw = new String(pwChars);
+                char[] pwArray = t2.getPassword();
+                String pw = new String(pwArray);  //
+                boolean loginSuccess = db.login(id,pw);
 
-                if (id.equals("admin") && pw.equals("123")) {
-                    JOptionPane.showMessageDialog(null,"success");
+                if(loginSuccess) {
+                    JOptionPane.showMessageDialog(null, "success");
                     setVisible(false);
-                    new Main();
+                    new MainFrame();
                 } else {
-                    JOptionPane.showMessageDialog(null,"error");
+                    JOptionPane.showMessageDialog(null, "failure");
                 }
             }
         });
-        JPanel p3 = new JPanel();
-        p3.add(submitButton);
-        mainPanel.add(p3, BorderLayout.SOUTH);
 
-        add(mainPanel);
+        p2.add(b1);
+        add(p2, BorderLayout.SOUTH);
+
+        // 最後の行に置くこと
         setVisible(true);
     }
 
