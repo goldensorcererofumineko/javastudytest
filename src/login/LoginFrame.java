@@ -1,8 +1,7 @@
 package login;
 
+import dao.UserInfoDao;
 import main.MainFrame;
-import util.DbConn;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,10 +9,9 @@ import java.awt.event.ActionListener;
 
 public class LoginFrame extends JFrame {
 
-    public static String userIdl;
+    public static String userId;
 
     public LoginFrame() {
-        DbConn db = new DbConn();
         setTitle("楽しいJAVA-LOGIN");
         setSize(300,120);
         setLocationRelativeTo(null);
@@ -37,10 +35,12 @@ public class LoginFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String id = t1.getText();
                 char[] pwArray = t2.getPassword();
-                String pw = new String(pwArray);  //
-                boolean loginSuccess = db.login(id,pw);
+                String pw = new String(pwArray);
 
-                if(loginSuccess) {
+                UserInfoDao userInfoDao = new UserInfoDao();
+                boolean login_success = userInfoDao.login(id, pw);
+
+                if(login_success) {
                     JOptionPane.showMessageDialog(null, "success");
                     setVisible(false);
                     new MainFrame();

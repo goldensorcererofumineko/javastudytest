@@ -1,10 +1,7 @@
 package main;
 
-import History.HistoryFrame;
-import list.AnswerListFrame;
-import list.ListFrame;
+import qustion.AnswerListFrame;
 import login.LoginFrame;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -20,7 +17,7 @@ public class MainFrame extends JFrame {
 
         JPanel p = new JPanel(new GridLayout(2,1));
         JPanel p1 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        JLabel l1 = new JLabel(LoginFrame.userIdl + "さん");
+        JLabel l1 = new JLabel(LoginFrame.userId + "さん");
         p1.add(l1);
 
         JPanel p2 = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -32,7 +29,7 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                new ListFrame();
+//                new QuestionListFrame();
             }
         });
         JButton b2 = new JButton("履歴");

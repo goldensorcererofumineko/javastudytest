@@ -1,12 +1,9 @@
-package History;
-
-import list.AnswerListFrame;
+package history;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
 
 public class HistoryFrame extends JFrame {
     public HistoryFrame() {
@@ -15,7 +12,7 @@ public class HistoryFrame extends JFrame {
         setLocationRelativeTo(null);
 
         JPanel p = new JPanel();
-        JLabel l = new JLabel("<html><a href='file://C:/STUDY/enjoy/enjoyjava/src/list/AnswerListFrame.java'>4/17の解答</a></html>");
+        JLabel l = new JLabel("<html><a href='file://C:/STUDY/enjoy/enjoyjava/src/qustion/AnswerListFrame.java'>4/17の解答</a></html>");
         //クリック可能かどうかの視認性
         l.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
@@ -24,7 +21,7 @@ public class HistoryFrame extends JFrame {
 //                setVisible(false);
 //                new AnswerListFrame();
 //                try {
-//                    Desktop.getDesktop().open(new File("C:/STUDY/enjoy/enjoyjava/src/list/AnswerListFrame.java"));
+//                    Desktop.getDesktop().open(new File("C:/STUDY/enjoy/enjoyjava/src/qustion/AnswerListFrame.java"));
 //                } catch (Exception ex) {
 ////                    ex.printStackTrace();
 //                }

@@ -1,14 +1,12 @@
-package list;
+package qustion;
 
-import History.HistoryFrame;
+import history.HistoryFrame;
 import main.MainFrame;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import static javax.swing.JOptionPane.YES_OPTION;
 
 public class AnswerListFrame extends JFrame {
 
