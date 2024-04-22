@@ -1,16 +1,14 @@
 package qustion;
 
 import history.HistoryFrame;
-import main.MainFrame;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AnswerListFrame extends JFrame {
+public class AnswerFrame extends JFrame {
 
-    public AnswerListFrame(MainFrame mainFrame) {
+    public AnswerFrame() {
         JPanel p = new JPanel(new GridLayout(2,1));
 
         JPanel p1 = new JPanel();
@@ -73,7 +71,7 @@ public class AnswerListFrame extends JFrame {
         JPanel p3 = new JPanel(new GridLayout(1,3));
         JButton b1 = new JButton("前");
         b1.setEnabled(false);
-        JButton b2 = new JButton("一覧へ");
+        JButton b2 = new JButton("一覧");
         b2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

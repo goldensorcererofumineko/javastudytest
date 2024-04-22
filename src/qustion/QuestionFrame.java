@@ -12,10 +12,10 @@ import java.util.List;
 
 import static javax.swing.JOptionPane.YES_OPTION;
 
-public class QuestionListFrame extends JFrame {
+public class QuestionFrame extends JFrame {
     JButton b2 = new JButton("提出");
 
-    public QuestionListFrame(int index) {
+    public QuestionFrame(int index, String cate) {
         b2.setEnabled(false);
         JPanel p = new JPanel(new GridLayout(4,1));
 
@@ -23,7 +23,9 @@ public class QuestionListFrame extends JFrame {
 
         QuestionDao questionDao = new QuestionDao();
 
-        List<QuestionDto> questionDtoList = questionDao.getQuestionList();
+        List<QuestionDto> questionDtoList = questionDao.getQuestionList(cate);
+
+
 
         JTextArea t1 = new JTextArea(10,30);
         t1.append(questionDtoList.get(index).getContent());
@@ -72,7 +74,7 @@ public class QuestionListFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                new QuestionListFrame(index -1);
+                new QuestionFrame(index -1,cate);
             }
         });
         // 見てるidx 0であれば、非活性
@@ -98,7 +100,7 @@ public class QuestionListFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                new QuestionListFrame(index + 1);
+                new QuestionFrame(index + 1,cate);
             }
         });
         if(index == questionDtoList.size()-1) {
@@ -134,6 +136,6 @@ public class QuestionListFrame extends JFrame {
     }
 
     public static void main(String[] args) {
-        new QuestionListFrame(1);
+        new QuestionFrame(1,"1");
     }
 }

@@ -12,14 +12,14 @@ import static util.DbConn.getConn;
 
 public class QuestionDao {
 
-    public List<QuestionDto> getQuestionList() {
+    public List<QuestionDto> getQuestionList(String cate) {
 
         Connection conn = getConn();
 
         try {
             String sql = "SELECT * FROM question where category=?";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, "0");
+            ps.setString(1, cate);
             ResultSet rs = ps.executeQuery();
 
             // 変換 ResultSet -> List<UserInfodto>
@@ -36,6 +36,28 @@ public class QuestionDao {
             }
 
             return questionDtoList;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int getCategorySize() {
+        Connection conn = getConn();
+
+
+        try {
+            //DISTINCTで重複をまとめる
+            String sql = "SELECT DISTINCT category FROM question";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            int size = 0;
+            QuestionDto questionDto = new QuestionDto();
+            while (rs.next()) {
+                size++;
+            }
+
+            return size;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
